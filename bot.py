@@ -67,13 +67,13 @@ ____  _   _ ____  _   _ _   _ __  __ _____ ___
     print_centered_ascii(ascii_art, width, color_code)
     
     # Nhập liên kết Fluxus từ người dùng
-    fluxus_link = input("Nhập liên kết Fluxus: ").strip()
+    fluxus_link = input("LINK FLUXUS").strip()
 
     # Lấy dữ liệu từ API
     key_value = fetch_data(fluxus_link)
 
     if key_value is not None:
-        print("\nGiá trị key nhận được:")
+        print("\nKey Của Bạn Là:")
         print_slowly(key_value)
     else:
         print("Không thể lấy dữ liệu.")
