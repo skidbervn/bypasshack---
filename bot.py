@@ -1,6 +1,7 @@
 import requests
 import time
 import os
+from datetime import datetime
 
 # Mã màu ANSI
 RESET = '\033[0m'
@@ -46,6 +47,20 @@ def print_centered_ascii(ascii_text, width, color_code):
         centered_line = line.center(width)
         print(centered_line)
 
+def get_current_time():
+    """Trả về thời gian hiện tại theo định dạng giờ:phút:giây"""
+    now = datetime.now()
+    return now.strftime("%H:%M:%S")
+
+def get_current_date():
+    """Trả về ngày hiện tại theo định dạng ngày-tháng-năm"""
+    now = datetime.now()
+    return now.strftime("%d-%m-%Y")
+
+def get_location():
+    """Trả về vị trí giả lập, có thể thay đổi tùy ý"""
+    return "Hà Nội, Việt Nam"
+
 if __name__ == "__main__":
     # Văn bản ASCII cần căn giữa và màu sắc
     ascii_art = """
@@ -65,15 +80,20 @@ ____  _   _ ____  _   _ _   _ __  __ _____ ___
 
     # In văn bản ASCII căn giữa với màu sắc
     print_centered_ascii(ascii_art, width, color_code)
+
+    # In thông tin ngày giờ và vị trí
+    print(f"{BLUE}Ngày: {RESET}{get_current_date()}")
+    print(f"{BLUE}Giờ: {RESET}{get_current_time()}")
+    print(f"{BLUE}Vị trí: {RESET}{get_location()}")
     
     # Nhập liên kết Fluxus từ người dùng
-    fluxus_link = input("LINK FLUXUS:").strip()
+    fluxus_link = input("Nhập liên kết Fluxus: ").strip()
 
     # Lấy dữ liệu từ API
     key_value = fetch_data(fluxus_link)
 
     if key_value is not None:
-        print("\nKey Của Bạn Là:")
+        print("\nGiá trị key nhận được:")
         print_slowly(key_value)
     else:
         print("Không thể lấy dữ liệu.")
