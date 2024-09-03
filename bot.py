@@ -67,7 +67,7 @@ ____  _   _ ____  _   _ _   _ __  __ _____ ___
     print_centered_ascii(ascii_art, width, color_code)
     
     # Nhập liên kết Fluxus từ người dùng
-    fluxus_link = input("LINK FLUXUS=>").strip()
+    fluxus_link = input("LINK FLUXUS:").strip()
 
     # Lấy dữ liệu từ API
     key_value = fetch_data(fluxus_link)
